@@ -10,11 +10,12 @@ import {
 } from "react-native";
 
 interface props {
+  id: string;
   title: string;
   color: string;
 }
 
-export default function CategoryGridTile({ title, color }: props) {
+export default function CategoryGridTile({ id, title, color }: props) {
   const router = useRouter();
   return (
     <View style={style.gridItem}>
@@ -26,7 +27,7 @@ export default function CategoryGridTile({ title, color }: props) {
         onPress={() =>
           router.push({
             pathname: "/MealsScreen",
-            params: { categoryId: "c1" },
+            params: { categoryId: id },
           })
         }
       >
