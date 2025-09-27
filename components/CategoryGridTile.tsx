@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Platform,
@@ -14,6 +15,7 @@ interface props {
 }
 
 export default function CategoryGridTile({ title, color }: props) {
+  const router = useRouter();
   return (
     <View style={style.gridItem}>
       <Pressable
@@ -21,6 +23,12 @@ export default function CategoryGridTile({ title, color }: props) {
           style.button,
           pressed ? style.buttonPressed : null,
         ]}
+        onPress={() =>
+          router.push({
+            pathname: "/MealsScreen",
+            params: { categoryId: "c1" },
+          })
+        }
       >
         <View style={[style.innerContainer, { backgroundColor: color }]}>
           <Text style={style.title}>{title}</Text>
