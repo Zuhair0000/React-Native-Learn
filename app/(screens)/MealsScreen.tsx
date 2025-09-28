@@ -16,7 +16,15 @@ export default function MealsScreen() {
       <FlatList
         data={displayedMeals}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <MealItem title={item.title} />}
+        renderItem={({ item }) => (
+          <MealItem
+            title={item.title}
+            image={item.imageUrl}
+            durability={item.duration}
+            complexity={item.complexity}
+            affordability={item.affordability}
+          />
+        )}
       />
     </View>
   );
