@@ -5,8 +5,9 @@ export default function ScreensLayout() {
     <Stack
       screenOptions={{
         headerStyle: { backgroundColor: "#ddb52e" },
-        headerTintColor: "#4e0329",
+        headerTintColor: "#3f3f35",
         headerTitleAlign: "center",
+        contentStyle: { backgroundColor: "#3f3f35" },
       }}
     >
       <Stack.Screen
