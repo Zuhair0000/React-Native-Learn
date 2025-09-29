@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { MEALS, CATEGORIES } from "../../data/dummy-data";
 import MealItem from "@/components/MealItem";
@@ -12,7 +12,7 @@ export default function MealsScreen() {
     return mealItem.categoryIds.indexOf(categoryId) >= 0;
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const categoryTitle =
       CATEGORIES.find((cat) => cat.id === categoryId)?.title ?? "Meals";
 
