@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Image,
@@ -10,6 +11,7 @@ import {
 } from "react-native";
 
 interface props {
+  mealId: string;
   title: string;
   image: string;
   durability: string;
@@ -18,18 +20,23 @@ interface props {
 }
 
 export default function MealItem({
+  mealId,
   title,
   image,
   durability,
   complexity,
   affordability,
 }: props) {
+  const router = useRouter();
   return (
     <View style={style.maelItem}>
       <Pressable
         style={({ pressed }: PressableStateCallbackType) =>
           pressed ? style.buttonPressed : null
         }
+        onPress={() => {
+          router.push(`/(screens)/meal/${mealId}`);
+        }}
       >
         <View style={style.innerContainer}>
           <View>

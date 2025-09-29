@@ -6,7 +6,7 @@ import MealItem from "@/components/MealItem";
 
 export default function MealsScreen() {
   const { categoryId } = useLocalSearchParams<{ categoryId: string }>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const displayedMeals = MEALS.filter((mealItem) => {
     return mealItem.categoryIds.indexOf(categoryId) >= 0;
@@ -31,6 +31,7 @@ export default function MealsScreen() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <MealItem
+            mealId={item.id}
             title={item.title}
             image={item.imageUrl}
             durability={item.duration}

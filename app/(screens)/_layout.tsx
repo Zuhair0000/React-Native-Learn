@@ -19,8 +19,6 @@ export default function ScreensLayout() {
             title: "Meal Categories",
           }}
         />
-
-        <Stack.Screen name="MealsScreen" />
       </Stack>
     </>
   );
