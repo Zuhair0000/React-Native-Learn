@@ -1,15 +1,28 @@
-import { useLocalSearchParams } from "expo-router";
-import React from "react";
+import { useLocalSearchParams, useNavigation } from "expo-router";
+import React, { useEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { MEALS } from "../../data/dummy-data";
+import { MEALS, CATEGORIES } from "../../data/dummy-data";
 import MealItem from "@/components/MealItem";
 
 export default function MealsScreen() {
   const { categoryId } = useLocalSearchParams<{ categoryId: string }>();
+  const navigation = useNavigation();
 
   const displayedMeals = MEALS.filter((mealItem) => {
     return mealItem.categoryIds.indexOf(categoryId) >= 0;
   });
+
+  useEffect(() => {
+    const categoryTitle =
+      CATEGORIES.find((cat) => cat.id === categoryId)?.title ?? "Meals";
+
+    navigation.setOptions({
+      title: categoryTitle,
+      headerStyle: { backgroundColor: "#ddb52e" },
+      headerTintColor: "#4e0329",
+    });
+  }, [categoryId, navigation]);
+
   return (
     <View style={styles.container}>
       <Text>Meals Overview Screen - {categoryId}</Text>
@@ -29,10 +42,6 @@ export default function MealsScreen() {
     </View>
   );
 }
-
-export const options = {
-  title: "Meal-Screen",
-};
 
 const styles = StyleSheet.create({
   container: {

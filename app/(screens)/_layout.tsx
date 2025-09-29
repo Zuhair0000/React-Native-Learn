@@ -17,12 +17,7 @@ export default function ScreensLayout() {
         }}
       />
 
-      <Stack.Screen
-        name="MealsScreen"
-        options={{
-          title: "Meals Overview",
-        }}
-      />
+      <Stack.Screen name="MealsScreen" />
     </Stack>
   );
 }
