@@ -38,16 +38,30 @@ export default function MealDetailScreen() {
                 {item.affordability.toUpperCase()}
               </Text>
             </View>
-            <Text>Ingredients</Text>
-            {item.ingredients.map((ingredient: string) => (
-              <Text key={ingredient}>{ingredient}</Text>
-            ))}
-            <Text>Steps</Text>
-            {item.steps.map((step: string, index: string) => (
-              <Text key={step}>
-                {index + 1} - {step}
-              </Text>
-            ))}
+
+            <View style={style.outerContainer}>
+              <View style={style.listContainer}>
+                <View style={style.subtitleContainer}>
+                  <Text style={style.subtitle}>Ingredients</Text>
+                </View>
+                {item.ingredients.map((ingredient: string) => (
+                  <View key={ingredient} style={style.listItem}>
+                    <Text style={style.itemText}>{ingredient}</Text>
+                  </View>
+                ))}
+
+                <View style={style.subtitleContainer}>
+                  <Text style={style.subtitle}>Steps</Text>
+                </View>
+                {item.steps.map((step: string, index: string) => (
+                  <View key={step} style={style.listItem}>
+                    <Text style={style.itemText}>
+                      {index + 1} - {step}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            </View>
           </View>
         )}
       />
@@ -56,22 +70,16 @@ export default function MealDetailScreen() {
 }
 
 const style = StyleSheet.create({
-  innerContainer: {
-    borderRadius: 8,
-    overflow: "hidden",
-  },
-  buttonPressed: {
-    opacity: 0.5,
-  },
   image: {
     width: "100%",
-    height: 200,
+    height: 350,
   },
   title: {
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 18,
-    paddingTop: 10,
+    fontSize: 24,
+    margin: 10,
+    color: "white",
   },
   details: {
     flexDirection: "row",
@@ -82,5 +90,39 @@ const style = StyleSheet.create({
   detailItem: {
     marginHorizontal: 4,
     fontSize: 12,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+  },
+  subtitle: {
+    color: "#e2b497",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  subtitleContainer: {
+    borderBottomColor: "#e2b497",
+    borderBottomWidth: 2,
+    marginHorizontal: 12,
+    marginVertical: 2,
+    padding: 6,
+  },
+  listItem: {
+    borderRadius: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginVertical: 4,
+    marginHorizontal: 12,
+    backgroundColor: "#e2b497",
+  },
+  itemText: {
+    color: "#351401",
+    textAlign: "center",
+  },
+  outerContainer: {
+    alignItems: "center",
+  },
+  listContainer: {
+    width: "80%",
   },
 });
